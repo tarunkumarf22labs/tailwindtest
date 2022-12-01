@@ -3,18 +3,7 @@ import { useEffect, useState } from 'react'
 import Nav from './Components/Nav/Contact'
 
 function App() {
-  const [value, setvalue] = useState([])
-   
-  async function getproduct() {
-    const data = await axios.get('https://fakestoreapi.com/products')
-    const value = await data
-    setvalue(value.data)
-    return value
-  }
 
-   useEffect(() => {
-    getproduct()
-   },[])
   return (
     <>
         <Nav/>      
