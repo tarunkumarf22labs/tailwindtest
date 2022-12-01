@@ -1,6 +1,6 @@
 import React from 'react'
 import  houseing from   '../../assets/images.jpg'
-function Nav() {
+function Contact() {
   return (
     <>
      <header  >
@@ -32,4 +32,4 @@ function Nav() {
   )
 }
 
-export default Nav
+export default Contact

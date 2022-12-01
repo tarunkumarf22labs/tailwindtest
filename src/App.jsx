@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import Nav from './Components/Nav/Nav'
+import Nav from './Components/Nav/Contact'
 
 function App() {
   const [value, setvalue] = useState([])
