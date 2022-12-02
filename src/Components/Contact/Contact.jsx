@@ -1,6 +1,6 @@
 import React from "react";
 import houseing from "../../assets/images.jpg";
-import {  useFormik } from "formik";
+import { useFormik } from "formik";
 import * as yup from "yup";
 function Contact() {
   const formik = useFormik({
@@ -31,6 +31,7 @@ function Contact() {
       console.log(values);
     },
   });
+  console.log(formik);
   return (
     <>
       <header>
@@ -55,7 +56,7 @@ function Contact() {
               <div className="mb-6  w-full">
                 <input
                   className={`bg-gray-100 w-full p-2 border-2  ${
-                    formik.errors.name
+                    formik.errors.name && formik.touched.name
                       ? "border-red-500  outline-red-500 "
                       : "border-transparent"
                   }`}
@@ -65,6 +66,7 @@ function Contact() {
                   placeholder="your name"
                   onChange={formik.handleChange}
                   value={formik.values.name}
+                  onBlur={formik.handleBlur}
                 />
                 {formik.touched.name && formik.errors.name ? (
                   <p className="text-xs">{formik.errors.name}</p>
@@ -76,7 +78,7 @@ function Contact() {
               <div className="mb-6 w-full">
                 <input
                   className={` bg-gray-100 w-full p-2 "outline-red-500 border-2 "  ${
-                    formik.errors.email
+                    formik.errors.email && formik.touched.email
                       ? "border-red-500 outline-red-500"
                       : "border-transparent"
                   } `}
@@ -98,8 +100,8 @@ function Contact() {
               <div className="mb-6  w-full ">
                 <input
                   className={`bg-gray-100 w-full p-2 border-2   ${
-                    formik.errors.phonenumber
-                      ? "border-red-500"
+                    formik.touched.phonenumber && formik.errors.phonenumber
+                      ? "border-red-500 outline-red-500"
                       : "border-transparent"
                   } `}
                   type="text"
@@ -129,11 +131,13 @@ function Contact() {
               ></textarea>
               <button
                 className={`bg-black text-white w-full p-2 mb-4 ${
-                  !formik.isValid ? "opacity-60" : "opacity-100"
+                  !(formik.isValid && formik.dirty)
+                    ? "opacity-60"
+                    : "opacity-100"
                 } `}
                 type="Submit"
                 onClick={() => console.log(formik.isValid, formik)}
-                disabled={!formik.isValid}
+                disabled={!(formik.isValid && formik.dirty)}
               >
                 {" "}
                 Submit Feedback
