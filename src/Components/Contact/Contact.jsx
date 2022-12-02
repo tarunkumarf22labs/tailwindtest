@@ -34,8 +34,8 @@ function Contact() {
   return (
     <>
       <header>
-        <nav className=" p-4  shadow-lg bg-black text-weslint-plugin-prettier hite">
-          <div className="font-bold font-poppins">
+        <nav className=" p-4  shadow-lg bg-black text-white">
+          <div className="font-bold font-poppins ">
             <span>Chef Table</span>
           </div>
         </nav>
@@ -54,8 +54,10 @@ function Contact() {
             <form onSubmit={formik.handleSubmit} className="w-full">
               <div className="mb-6  w-full">
                 <input
-                  className={`bg-gray-100 w-full p-2  ${
-                    formik.errors.name ? "outline-red-500" : "outline-blue-500"
+                  className={`bg-gray-100 w-full p-2 border-2  ${
+                    formik.errors.name
+                      ? "border-red-500  outline-red-500 "
+                      : "border-transparent"
                   }`}
                   type="text"
                   id="name"
@@ -73,8 +75,10 @@ function Contact() {
 
               <div className="mb-6 w-full">
                 <input
-                  className={` bg-gray-100 w-full p-2 "outline-red-500"  ${
-                    formik.errors.email ? "outline-red-500" : "outline-blue-500"
+                  className={` bg-gray-100 w-full p-2 "outline-red-500 border-2 "  ${
+                    formik.errors.email
+                      ? "border-red-500 outline-red-500"
+                      : "border-transparent"
                   } `}
                   type="email"
                   id="email"
@@ -93,10 +97,10 @@ function Contact() {
 
               <div className="mb-6  w-full ">
                 <input
-                  className={`bg-gray-100 w-full p-2 ${
+                  className={`bg-gray-100 w-full p-2 border-2   ${
                     formik.errors.phonenumber
-                      ? "outline-red-500"
-                      : "outline-blue-500"
+                      ? "border-red-500"
+                      : "border-transparent"
                   } `}
                   type="text"
                   id="phonenumber"
@@ -107,7 +111,7 @@ function Contact() {
                   onBlur={formik.handleBlur}
                 />
                 {formik.touched.phonenumber && formik.errors.phonenumber ? (
-                  <p className="text-xs "> {formik.errors.phonenumber} </p>
+                  <p className="text-xs"> {formik.errors.phonenumber} </p>
                 ) : (
                   <p className="h-4 w-4"></p>
                 )}
