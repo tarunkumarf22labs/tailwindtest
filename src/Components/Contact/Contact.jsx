@@ -69,7 +69,7 @@ function Contact() {
                   onBlur={formik.handleBlur}
                 />
                 {formik.touched.name && formik.errors.name ? (
-                  <p className="text-xs">{formik.errors.name}</p>
+                  <p className="text-xs text-red-500 ">{formik.errors.name}</p>
                 ) : (
                   <p className="h-4 w-4"></p>
                 )}
@@ -91,7 +91,10 @@ function Contact() {
                   onBlur={formik.handleBlur}
                 />
                 {formik.touched.email && formik.errors.email ? (
-                  <p className="text-xs"> {formik.errors.email} </p>
+                  <p className="text-xs text-red-500 ">
+                    {" "}
+                    {formik.errors.email}{" "}
+                  </p>
                 ) : (
                   <p className="h-4 w-4"></p>
                 )}
@@ -113,7 +116,10 @@ function Contact() {
                   onBlur={formik.handleBlur}
                 />
                 {formik.touched.phonenumber && formik.errors.phonenumber ? (
-                  <p className="text-xs"> {formik.errors.phonenumber} </p>
+                  <p className="text-xs text-red-500 ">
+                    {" "}
+                    {formik.errors.phonenumber}{" "}
+                  </p>
                 ) : (
                   <p className="h-4 w-4"></p>
                 )}
