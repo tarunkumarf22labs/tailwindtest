@@ -1,19 +1,11 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import Nav from './Components/Nav/Contact'
-
+import { useEffect, useState } from "react";
+import Contact from "./Components/Contact/Contact";
 function App() {
-
   return (
     <>
-        <Nav/>      
-       
-
-  
-      
-  
+      <Contact />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
