@@ -1,6 +1,6 @@
 import React from "react";
 import houseing from "../../assets/images.jpg";
-import { Formik, useFormik } from "formik";
+import {  useFormik } from "formik";
 import * as yup from "yup";
 function Contact() {
   const formik = useFormik({
@@ -34,7 +34,7 @@ function Contact() {
   return (
     <>
       <header>
-        <nav className=" p-4  shadow-lg bg-black text-white">
+        <nav className=" p-4  shadow-lg bg-black text-weslint-plugin-prettier hite">
           <div className="font-bold font-poppins">
             <span>Chef Table</span>
           </div>
@@ -48,13 +48,13 @@ function Contact() {
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga
               soluta ipsam nostrum ad debitis ut. Lorem, ipsum dolor sit amet
             </p>
-            <img src={houseing} alt="" className="w-full  mb-4" />
+            <img src={houseing} alt="" className="w-full  mb-8" />
           </div>
           <div className="w-full">
             <form onSubmit={formik.handleSubmit} className="w-full">
-              <div className="mb-4  w-full">
+              <div className="mb-6  w-full">
                 <input
-                  className={`bg-gray-100 w-full p-2 ${
+                  className={`bg-gray-100 w-full p-2  ${
                     formik.errors.name ? "outline-red-500" : "outline-blue-500"
                   }`}
                   type="text"
@@ -65,11 +65,13 @@ function Contact() {
                   value={formik.values.name}
                 />
                 {formik.touched.name && formik.errors.name ? (
-                  <p>{formik.errors.name}</p>
-                ) : null}
+                  <p className="text-xs">{formik.errors.name}</p>
+                ) : (
+                  <p className="h-4 w-4"></p>
+                )}
               </div>
 
-              <div className="mb-4  w-full">
+              <div className="mb-6 w-full">
                 <input
                   className={` bg-gray-100 w-full p-2 "outline-red-500"  ${
                     formik.errors.email ? "outline-red-500" : "outline-blue-500"
@@ -83,14 +85,18 @@ function Contact() {
                   onBlur={formik.handleBlur}
                 />
                 {formik.touched.email && formik.errors.email ? (
-                  <p> {formik.errors.email} </p>
-                ) : null}
+                  <p className="text-xs"> {formik.errors.email} </p>
+                ) : (
+                  <p className="h-4 w-4"></p>
+                )}
               </div>
 
-              <div className="mb-4  w-full ">
+              <div className="mb-6  w-full ">
                 <input
                   className={`bg-gray-100 w-full p-2 ${
-                    formik.errors.phonenumber ? "outline-red-500" : "outline-blue-500"
+                    formik.errors.phonenumber
+                      ? "outline-red-500"
+                      : "outline-blue-500"
                   } `}
                   type="text"
                   id="phonenumber"
@@ -101,8 +107,10 @@ function Contact() {
                   onBlur={formik.handleBlur}
                 />
                 {formik.touched.phonenumber && formik.errors.phonenumber ? (
-                  <p> {formik.errors.phonenumber} </p>
-                ) : null}
+                  <p className="text-xs "> {formik.errors.phonenumber} </p>
+                ) : (
+                  <p className="h-4 w-4"></p>
+                )}
               </div>
 
               <textarea
@@ -116,7 +124,9 @@ function Contact() {
                 value={formik.values.message}
               ></textarea>
               <button
-                className="bg-black text-white w-full p-2 mb-4"
+                className={`bg-black text-white w-full p-2 mb-4 ${
+                  !formik.isValid ? "opacity-60" : "opacity-100"
+                } `}
                 type="Submit"
                 onClick={() => console.log(formik.isValid, formik)}
                 disabled={!formik.isValid}
