@@ -1,6 +1,6 @@
 import React from "react";
 import houseing from "../../assets/images.jpg";
-import {  useFormik } from "formik";
+import { Formik, useFormik } from "formik";
 import * as yup from "yup";
 function Contact() {
   const formik = useFormik({
@@ -11,10 +11,19 @@ function Contact() {
       message: "",
     },
     validationSchema: yup.object({
-      name: yup.string().max(8, "Must be 8 characters ").required("required"),
-      email: yup.string().email("invalid email adress").required("required"),
+      name: yup
+        .string()
+        .trim()
+        .max(8, "Minmum be 8 characters ")
+        .required("required"),
+      email: yup
+        .string()
+        .trim()
+        .email("invalid email adress")
+        .required("required"),
       phonenumber: yup
         .string()
+        .trim()
         .length(10, "phone number must be of 10 digit")
         .required("required"),
     }),
@@ -33,7 +42,7 @@ function Contact() {
       </header>
       <section className="bg-gray-300 min-w-fit min-h-screen  justify-between flex ">
         <article className="bg-white w-full flex flex-col justify-between items-center  p-8 m-4  md:flex-row ">
-          <div className="pr-8">
+          <div className="md:pr-8">
             <h2 className="font-bold pb-8 font-poppins">Need help?</h2>
             <p className=" pb-4 font-poppins">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga
@@ -45,7 +54,9 @@ function Contact() {
             <form onSubmit={formik.handleSubmit} className="w-full">
               <div className="mb-4  w-full">
                 <input
-                  className="bg-gray-100 w-full p-2"
+                  className={`bg-gray-100 w-full p-2 ${
+                    formik.errors.name ? "outline-red-500" : "outline-blue-500"
+                  }`}
                   type="text"
                   id="name"
                   name="name"
@@ -60,7 +71,9 @@ function Contact() {
 
               <div className="mb-4  w-full">
                 <input
-                  className="bg-gray-100 w-full p-2 "
+                  className={` bg-gray-100 w-full p-2 "outline-red-500"  ${
+                    formik.errors.email ? "outline-red-500" : "outline-blue-500"
+                  } `}
                   type="email"
                   id="email"
                   name="email"
@@ -76,7 +89,9 @@ function Contact() {
 
               <div className="mb-4  w-full ">
                 <input
-                  className="bg-gray-100 w-full p-2 "
+                  className={`bg-gray-100 w-full p-2 ${
+                    formik.errors.phonenumber ? "outline-red-500" : "outline-blue-500"
+                  } `}
                   type="text"
                   id="phonenumber"
                   name="phonenumber"
@@ -103,6 +118,8 @@ function Contact() {
               <button
                 className="bg-black text-white w-full p-2 mb-4"
                 type="Submit"
+                onClick={() => console.log(formik.isValid, formik)}
+                disabled={!formik.isValid}
               >
                 {" "}
                 Submit Feedback
